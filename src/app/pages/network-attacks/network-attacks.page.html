@@ -1,0 +1,92 @@
+<div class="d-flex flex-column h-100">
+
+
+<!-- Toolbar -->
+<div class="container-fluid">
+    <div class="row align-items-center shadow-sm" id="controls">
+
+        <!-- Playback controls -->
+        <div class="col-6 d-flex align-items-center">
+            <div id="resetButton">
+                <button type="button" class="btn btn-light btn-lg rounded-circle" title="Reset" (click)="reset()">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
+            </div>
+            <div id="playButton">
+                <button *ngIf="!playing" type="button" class="btn btn-secondary btn-lg rounded-circle" title="Play" (click)="play()">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+                <button *ngIf="playing" type="button" class="btn btn-secondary btn-lg rounded-circle" title="Pause" (click)="pause()">
+                    <i class="bi bi-pause-fill"></i>
+                </button>
+            </div>
+            <div id="stepButton">
+                <button type="button" class="btn btn-light btn-lg rounded-circle" title="Step" (click)="step()">
+                    <i class="bi bi-skip-end-fill"></i>
+                </button>
+            </div>
+            <div class="text-center ms-5" id="currentIteration">
+                <span class="display-6">{{ currentIteration | number: '3.0' }}</span><br>
+                <p>current<br>iteration</p>
+            </div>
+            <div class="text-center" id="currentCounter">
+                <span class="display-6">{{ currentLargestComponent | number: '1.2-2' }}</span><br>
+                <p>largest<br>component</p>
+            </div>
+        </div>
+
+        <!-- Selection -->
+        <div class="col-2">
+            <label class="form-label m-0">Select Network</label>
+            <select class="form-select" (input)="selectNetwork($event)">
+                <option *ngFor="let n of networks" value="{{ n.name }}" [selected]="n.name == selectedNetwork">{{ n.display_name }}</option>
+            </select>
+        </div>
+        <div class="col-2">
+            <label class="form-label m-0">Select Centrality</label>
+            <select class="form-select" [disabled]="!selectedNetwork" (input)="selectCentrality($event)">
+                <option *ngFor="let c of centralities" value="{{ c.name }}" [selected]="c.name == selectedCentrality">{{ c.display_name }}</option>
+            </select>
+        </div>
+
+        <div class="col-2">
+            <label for="speedRange" class="form-label mb-2">Playback Speed</label>
+            <div class="d-flex align-items-center">
+                <input
+                    type="range" class="form-range" min="50" max="1000" step="50"
+                    value="{{ attackIntervalDelay }}" title="{{ attackIntervalDelay | number: '1.0-0' }}"
+                    (change)="updateSpeed($event)"
+                    id="speedRange">
+                <span class="badge rounded-pill text-bg-secondary ms-2">{{ attackIntervalDelay }} ms</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Graph -->
+<div class="flex-grow-1 position-relative ">
+
+    <app-network #graph
+        *ngIf="network.nodes.length"
+        [data]="network"
+        [network]="network"
+        [centrality]="centrality"
+    ></app-network>
+
+    <div *ngIf="showSigmaSlider" class="position-absolute bottom-0 mb-4 w-100">
+        <div class="d-flex align-items-center shadow-sm" id="sigmaRangeContainer">
+            <label for="sigmaRange" class="form-label" style="min-width: 70px;">
+                Sigma <strong>&sigma;</strong>
+            </label>
+            <input type="range" class="form-range" min="1" max="100" step="1"
+                value="{{ selectedSigma }}" title="{{ selectedSigma | number: '1.2-2' }}"
+                (change)="updateSigma($event)"
+                id="sigmaRange">
+            <span class="badge rounded-pill text-bg-secondary ms-2">.{{ selectedSigma }}</span>
+        </div>
+    </div>
+</div>
+
+</div>

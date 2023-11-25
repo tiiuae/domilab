@@ -1,0 +1,34 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "celegans",
+            "display_name": "Celegans",
+            "url": "data/celegans/network.json"
+        },
+        {
+            "id": 2,
+            "name": "dolphin",
+            "display_name": "Dolphin",
+            "url": "data/dolphin/network.json"
+        },
+        {
+            "id": 3,
+            "name": "erdosrenyi",
+            "display_name": "Erdosrenyi",
+            "url": "data/erdosrenyi/network.json"
+        },
+        {
+            "id": 4,
+            "name": "karateclub",
+            "display_name": "Karate Club",
+            "url": "data/karateclub/network.json"
+        },
+        {
+            "id": 5,
+            "name": "lattice",
+            "display_name": "Lattice",
+            "url": "data/lattice/network.json"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+<div class="d-flex flex-column h-100">
+
+    <div class="container-fluid shadow" id="controls">
+        <div class="row align-items-center">
+            <div class="col-4 d-flex align-items-center">
+                <div id="resetButton">
+                    <button type="button" class="btn btn-light btn-lg rounded-circle" title="Reset">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                </div>
+                <div id="sortButton">
+                    <button type="button" class="btn btn-secondary btn-lg rounded-circle" title="Sort">
+                        <i class="bi bi-sort-down"></i>
+                    </button>
+                </div>
+                <div class="text-center ms-auto" id="currentIteration">
+                    <span class="display-6">000</span><br>
+                    <p>current<br>iteration</p>
+                </div>
+                <div class="text-center" id="currentCounter">
+                    <span class="display-6">1.00</span><br>
+                    <p>largest<br>component</p>
+                </div>
+            </div>
+            <div class="col-2 offset-2">
+                <!-- <label class="form-label m-0">Select Network</label> -->
+                <select class="form-select">
+                    <option value="" selected>Select Network</option>
+                    <option *ngFor="let n of []" value="{{ 0 }}">{{ "n.display_name" }}</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <!-- <label class="form-label m-0">Select Centrality</label> -->
+                <select class="form-select" [disabled]="false">
+                    <option value="" selected>Select Centrality</option>
+                    <option *ngFor="let c of []" value="{{ 0 }}">{{ "c.display_name" }}</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label for="sigmaRange" class="form-label m-0">Select Sigma</label>
+                <input type="range" class="form-range" min="0" max="1" step="0.1" value="0.5" id="sigmaRange" title="0">
+            </div>
+        </div>
+    </div>
+    
+    <div class="flex-grow-1">
+        <app-arc-diagram #arc
+            *ngIf="network.nodes.length"
+            [data]="network"
+            [options]="options"
+        ></app-arc-diagram>
+    </div>
+    
+    </div>

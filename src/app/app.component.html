@@ -1,0 +1,62 @@
+<div class="d-flex h-100 w-100">
+
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light h-100" style="width: 280px;">
+
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <img width="32" height="32" src="favicon.ico" alt="" srcset="">
+      <span class="ms-2 b-2 fs-4">DomiLab</span>
+    </a>
+
+    <hr>
+
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li>
+        <a href="/network-attacks" class="nav-link"
+          [ngClass]="{'active': this.menu.isActive('network-attacks'), 'link-dark': !this.menu.isActive('network-attacks')}">
+          <i class="bi bi-dice-5 me-2"></i>
+          Network Attacks
+        </a>
+      </li>
+      <li>
+        <a href="/arc-diagram" class="nav-link disabled"
+          [ngClass]="{'active': this.menu.isActive('arc-diagram'), 'link-dark': !this.menu.isActive('arc-diagram')}">
+          <i class="bi bi-rainbow me-2"></i>
+          Arc Diagram <span class="badge text-bg-secondary">Soon</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/interactive-sigma" class="nav-link disabled"
+          [ngClass]="{'active': this.menu.isActive('interactive-sigma'), 'link-dark': !this.menu.isActive('interactive-sigma')}">
+          <i class="bi bi-arrow-left-right me-2"></i>
+          Interactive Sigma <span class="badge text-bg-secondary">Soon</span>
+        </a>
+      </li>
+    </ul>
+
+    <hr>
+
+    <small class="text-muted">
+      Technology Innovation Institute,<br>
+      Directed Energy Research Center.
+    </small>
+
+  </div>
+
+
+  <div class="d-flex flex-column align-items-start w-100">
+
+    <div class="display-6 text-center w-100" id="introMessage">
+      Experiment with a <strong>Network</strong> here in your browser.<br>
+      Don't worry. You can't break it. We promise.
+    </div>
+
+    <div class="w-100 h-100 overflow-hidden">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+
+
+
+</div>

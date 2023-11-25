@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* import the necessary Bootstrap files */
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+// $component-active-bg: #00C18C;
+$form-range-thumb-bg: #00C18C;
+$nav-pills-link-active-bg: #00C18C;
+
+/* Importing Bootstrap SCSS file. */    
+@import 'bootstrap/scss/bootstrap';
+
+html, body {
+    height: 100%;
+}

@@ -1,0 +1,46 @@
+
+#controls {
+    background-color: rgb(240, 240, 240);
+    padding: 15px 50px;
+}
+
+#resetButton {
+    padding: 5px;
+    button {
+        aspect-ratio: 1;
+    }
+}
+
+#sortButton {
+    color: gray;
+    button {
+        width: 80px;
+        aspect-ratio: 1;
+        font-size: 2.3rem;
+        rotate: -90deg;
+        padding: 0;
+    }
+}
+
+#stepButton {
+    padding: 5px;
+    button {
+        aspect-ratio: 1;
+    }
+}
+
+#currentCounter {
+    margin: 0 10px 0 10px;
+    p {
+        line-height: 1em;
+        font-size: 0.8rem;
+    }
+}
+
+#currentIteration {
+    margin: 0 10px 0 10px;
+    p {
+        line-height: 1em;
+        font-size: 0.8rem;
+    }
+}

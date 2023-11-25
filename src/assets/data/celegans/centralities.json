@@ -1,0 +1,29 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "display_name": "DomiRank",
+            "url": "data/celegans/centralities/domirank.json"
+        },
+        {
+            "id": 2,
+            "display_name": "Betweenness",
+            "url": "data/celegans/centralities/betweenness.json"
+        },
+        {
+            "id": 3,
+            "display_name": "Degree",
+            "url": "data/celegans/centralities/degree.json"
+        },
+        {
+            "id": 4,
+            "display_name": "Eigenvector",
+            "url": "data/celegans/centralities/eigenvector.json"
+        },
+        {
+            "id": 5,
+            "display_name": "PageRank",
+            "url": "data/celegans/centralities/pagerank.json"
+        }
+    ]
+}

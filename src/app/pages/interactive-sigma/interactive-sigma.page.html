@@ -1,0 +1,30 @@
+
+<div class="d-flex flex-column align-items-start w-100 h-100">
+    <div class="shadow-sm p-3 w-100" id="toolsBar">
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Choose a centrality</label>
+                <select class="form-select" id="selectCentrality">
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Choose a network</label>
+                <select class="form-select" id="selectGraph">
+                </select>
+            </div>
+        <div class="col">
+            <label for="inputAlpha" class="form-label mb-3">Change the value of Sigma</label>
+            <div class="d-flex flex-row">
+                <input type="range" class="form-range" min="1" max="100" step="1" id="inputAlpha">
+                <strong class="text-muted ms-3" id="inputAlphaValue"></strong>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- <app-network
+        [data]="data"
+        [options]="options"
+        class="w-100 h-100"
+    ></app-network> -->
+</div>
