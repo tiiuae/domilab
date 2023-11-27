@@ -24,6 +24,7 @@
     "bootstrap-icons": "^1.10.5",
     "d3": "^7.8.4",
     "express": "^4.18.2",
+    "ngx-google-analytics": "^14.0.1",
     "path": "^0.12.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
