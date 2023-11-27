@@ -8,7 +8,7 @@
         <!-- Playback controls -->
         <div class="col-6 d-flex align-items-center">
             <div id="resetButton">
-                <button type="button" class="btn btn-light btn-lg rounded-circle" title="Reset" (click)="reset()">
+                <button type="button" class="btn btn-light btn-lg rounded-circle" title="Reset" [ngClass]="{'disabled': !resetEnabled}" (click)="reset()">
                     <i class="bi bi-arrow-counterclockwise"></i>
                 </button>
             </div>

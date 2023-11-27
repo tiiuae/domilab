@@ -30,6 +30,7 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
   currentIteration: number = 0
   showSigmaSlider: boolean = false
   playing: boolean = false
+  resetEnabled: boolean = true
 
   constructor(
     private api: ApiService,
@@ -101,8 +102,10 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
 
   // onclick event handler
   public reset() {
+    this.resetEnabled = false;
     this.pause();
     this.loadNetwork();
+    this.resetEnabled = true;
     this.graph.resetGraph();
   }
 
