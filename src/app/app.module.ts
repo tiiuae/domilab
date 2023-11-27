@@ -13,6 +13,8 @@ import { ToastService } from './services/toast.service';
 import { ArcDiagramPage } from './pages/arc-diagram/arc-diagram.page';
 import { MenuService } from './services/menu.service';
 import { ArcDiagramComponent } from './components/arc-diagram/arc-diagram.component';
+import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
+import { environment as env } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { ArcDiagramComponent } from './components/arc-diagram/arc-diagram.compon
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    NgxGoogleAnalyticsModule.forRoot(env.config.ua_measurement_id),
+    NgxGoogleAnalyticsRouterModule,
     NgbModule
   ],
   providers: [
