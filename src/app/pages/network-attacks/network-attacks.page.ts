@@ -59,7 +59,7 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
       this.currentIteration = 0
       this.showSigmaSlider = true
       if (!this.selectedSigma)
-        this.selectedSigma = this.centrality['optimal_sigma'] * 100
+        this.selectedSigma = Math.ceil(this.centrality['optimal_sigma'] * 100)
       this.currentLargestComponent = this.centrality['centrality'][this.selectedSigma-1]['largest_component'][this.currentIteration]
       this.orderOfRemoval = this.centrality['centrality'][this.selectedSigma-1]['nodes']
       this.centrality = this.centrality['centrality'][this.selectedSigma-1]
@@ -134,6 +134,7 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
   // onclick event handler
   public selectNetwork(e: any) {
     this.selectedNetwork = e.target.value.length ? e.target.value : null
+    this.selectedSigma = null
     // this.selectedCentrality = null
     this.pause()
     this.loadNetwork()
@@ -143,6 +144,7 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
   // onclick event handler
   public selectCentrality(e: any) {
     this.selectedCentrality = e.target.value.length ? e.target.value : null
+    this.selectedSigma = null
     this.pause()
     this.loadNetwork()
     this.graph.resetGraph();

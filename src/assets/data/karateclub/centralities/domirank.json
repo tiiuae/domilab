@@ -1,6 +1,6 @@
 {
   "has_sigma": true,
-  "optimal_sigma": 0.5,
+  "optimal_sigma": 0.29,
   "centrality": [
     {
       "values": [
