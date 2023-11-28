@@ -84,7 +84,7 @@
                 value="{{ selectedSigma }}" title="{{ selectedSigma | number: '1.2-2' }}"
                 (change)="updateSigma($event)"
                 id="sigmaRange">
-            <span class="badge rounded-pill text-bg-secondary ms-2">.{{ selectedSigma }}</span>
+            <span class="badge rounded-pill text-bg-secondary ms-2">{{ selectedSigma / 100 | number: '1.2-2' }}</span>
         </div>
     </div>
 </div>

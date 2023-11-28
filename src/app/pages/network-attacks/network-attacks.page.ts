@@ -22,7 +22,7 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
 
   selectedNetwork: any = "dolphin"
   selectedCentrality: any = "pagerank"
-  selectedSigma: number = 50
+  selectedSigma: any = null;
 
   attackInterval: any = null;
   attackIntervalDelay: number = 250; // in milliseconds
@@ -58,9 +58,11 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
     if (this.hasSigmaParameter(this.centrality)) {
       this.currentIteration = 0
       this.showSigmaSlider = true
-      this.currentLargestComponent = this.centrality[this.selectedSigma]['largest_component'][this.currentIteration]
-      this.orderOfRemoval = this.centrality[this.selectedSigma]['nodes']
-      this.centrality = this.centrality[this.selectedSigma]
+      if (!this.selectedSigma)
+        this.selectedSigma = this.centrality['optimal_sigma'] * 100
+      this.currentLargestComponent = this.centrality['centrality'][this.selectedSigma-1]['largest_component'][this.currentIteration]
+      this.orderOfRemoval = this.centrality['centrality'][this.selectedSigma-1]['nodes']
+      this.centrality = this.centrality['centrality'][this.selectedSigma-1]
     } else {
       this.currentIteration = 0
       this.showSigmaSlider = false
@@ -147,7 +149,7 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
   }
 
   public hasSigmaParameter(centrality: any) {
-    return Array.isArray(centrality)
+    return Object.hasOwn(centrality, 'has_sigma')
   }
 
 
