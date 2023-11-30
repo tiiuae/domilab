@@ -15,7 +15,7 @@ DomiLab, is a tool that allows you to visualize attacks on complex networks. You
 ## Showcased Centralities
 Centrality | Abstract | Paper | Year
 | :------ | :---- | :---: | :---:
-| DomiRank (ours) | - | [link](https://github.com/tiiuae/domilab) | -
+| DomiRank (ours) | - | [link](https://arxiv.org/abs/2305.09589) | 2023
 | PageRank | - | [link](https://github.com/tiiuae/domilab) | -
 | Betweenness | - | [link](https://github.com/tiiuae/domilab) | -
 | Degree | - | [link](https://github.com/tiiuae/domilab) | -
