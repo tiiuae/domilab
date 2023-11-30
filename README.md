@@ -36,7 +36,7 @@ Lattice  | - | 84 | 49
 ## Data Files Structure
 
 ## Network JSON Structure
-### Adding a New Network
+### *Adding a New Network
 ## Centrality JSON Structure
-### Adding a New Centrality
+### *Adding a New Centrality
 
