@@ -4,28 +4,39 @@
 
 DomiLab, is a tool that allows you to visualize attacks on complex networks. You can use the tool on [domilab.tii.ae](https://domilab-f7f229c50a39.herokuapp.com/)
 
-- - - -
-## Showcased Networks
-1. Celegans
-2. Dolphin
-3. Erdos-Renyi
-4. Zachary's Karate Club
-5. Lattice
+### Table of Contents
+**[Showcased Centralities](#showcased-centralities)**<br>
+**[Showcased Networks](#showcased-networks)**<br>
+**[Installation](#installation)**<br>
+**[Data Files Structure](#data-files-structure)**<br>
 
-Network | Description | Paper | # of Nodes | # of Links
-| :------ | :---- | :---: | :---: | :---:
-Celegans  | - | [link](http://www.google.com/) | - | -
-Dolphin  | - | [link](http://www.google.com/) | - | -
-Erdos-Renyi  | - | [link](http://www.google.com/) | - | -
-Zachary's Karate Club  | - | [link](http://www.google.com/) | - | -
-Lattice  | - | [link](http://www.google.com/) | - | -
+- - - -
 
 ## Showcased Centralities
-1. DomiRank (ours)
-2. Betweenness Centrality
-3. Degree Centrality
-4. Eigenvector Centrality
-5. PageRank
+Centrality | Abstract | Paper | Year
+| :------ | :---- | :---: | :---:
+| DomiRank (ours) | - | [link](https://github.com/tiiuae/domilab) | -
+| PageRank | - | [link](https://github.com/tiiuae/domilab) | -
+| Betweenness | - | [link](https://github.com/tiiuae/domilab) | -
+| Degree | - | [link](https://github.com/tiiuae/domilab) | -
+| Eigenvector | - | [link](https://github.com/tiiuae/domilab) | -
+
+
+## Showcased Networks
+Network | Description | # of Nodes | # of Links
+| :------ | :---- | :---: | :---:
+[Caenorhabditis elegans (neural)](http://konect.cc/networks/dimacs10-celegansneural/)  | This is a weighted directed network representing the neural network of Caenorhabditis elegans. The original network had directed edges allowing multiple parallel edges with integer weights. In this version, the network is undirected, allows no multiple edges, and the given edge weights are the sum of the original edge weights. As described in the original publication by J. G. White and colleagues, the data was assembled by hand and may contain a small number of errors. To cite: "We are reasonably confident that the structure that we present is substantially correct and gives a reasonable picture of the organization of the nervous system in a typical C. elegans hermaphrodite." | 297 | 4,296
+[Dolphins](http://konect.cc/networks/dolphins/)  | This is a directed social network of bottlenose dolphins. The nodes are the bottlenose dolphins (genus Tursiops) of a bottlenose dolphin community living off Doubtful Sound, a fjord in New Zealand (spelled fiord in New Zealand). An edge indicates a frequent association. The dolphins were observed between 1994 and 2001. | 62 | 159
+[Erdos-Renyi](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model)  | The Erdős–Rényi model refers to one of two closely related models for generating random graphs or the evolution of a random network. These models are named after Hungarian mathematicians Paul Erdős and Alfréd Rényi, who introduced one of the models in 1959.[1][2] Edgar Gilbert introduced the other model contemporaneously with and independently of Erdős and Rényi.[3] In the model of Erdős and Rényi, all graphs on a fixed vertex set with a fixed number of edges are equally likely. In the model introduced by Gilbert, also called the Erdős–Rényi–Gilbert model,[4] each edge has a fixed probability of being present or absent, independently of the other edges. | 100 | 190
+[Zachary Karate Club](http://konect.cc/networks/ucidata-zachary/)  | This is the well-known and much-used Zachary karate club network. The data was collected from the members of a university karate club by Wayne Zachary in 1977. Each node represents a member of the club, and each edge represents a tie between two members of the club. The network is undirected. An often discussed problem using this dataset is to find the two groups of people into which the karate club split after an argument between two teachers. | 34 | 78
+Lattice  | - | 84 | 49
 
 ## Installation
+
+## Data Files Structure
+
+## Network JSON Structure
+### Adding a New Network
+## Centrality JSON Structure
+### Adding a New Centrality
 
