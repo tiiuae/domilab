@@ -26,3 +26,6 @@ Lattice  | - | [link](http://www.google.com/) | - | -
 3. Degree Centrality
 4. Eigenvector Centrality
 5. PageRank
+
+## Installation
+
