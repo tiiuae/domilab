@@ -1,6 +1,6 @@
 # DomiLab: Network Resilience Playground
 
-![picture alt](src/assets/web.jpeg)
+![picture alt](src/assets/web.gif)
 
 DomiLab, is a tool that allows you to visualize attacks on complex networks. You can use the tool on [domilab.tii.ae](https://domilab-f7f229c50a39.herokuapp.com/)
 
