@@ -1,4 +1,4 @@
-# DomiLab: Network Resilience Playground
+# DomiLab: the Networks Resilience Playground
 
 <img src="src/assets/webgif.gif" width=100%>
 
