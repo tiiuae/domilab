@@ -54,7 +54,7 @@ Lattice  | - | 84 | 49
   ]
 }
 ```
-You can find an example from the included networks [here](src/assets/data/lattice/network.json).
+You can find an example from the included networks in [data/lattice/network.json](src/assets/data/lattice/network.json).
   
 ### *Adding a New Network
   
@@ -83,7 +83,7 @@ You can find an example from the included networks [here](src/assets/data/lattic
   ]
 }
 ```
-You can find an example from the included centralities for the lattice network [here](src/assets/data/lattice/centralities/degree.json).
+You can find an example from the included centralities for the lattice network in [data/lattice/centralities/degree.json](src/assets/data/lattice/centralities/degree.json).
   
 ### *Adding a New Centrality
 
