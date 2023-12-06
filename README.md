@@ -57,7 +57,9 @@ Lattice  | - | 84 | 49
 You can find an example from the included networks in [data/lattice/network.json](src/assets/data/lattice/network.json).
   
 ### *Adding a New Network
-  
+1. Create a new directory directly in `src/assets/data/` and give it the name of the new network. Example: "dolphins".
+2. Prepare your network in a JSON file with the structure shown in [Network JSON Structure](#network-json-structure) and place it in the new netork directory.
+3. The network will show up in the network selection dropdown in DomiLab once you add 1 or more pre-calculated centralities to it. See [Adding a New Centrality](#adding-a-new-centrality)
 
 ## Centrality JSON Structure
 ```json
