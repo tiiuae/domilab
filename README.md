@@ -36,7 +36,55 @@ Lattice  | - | 84 | 49
 ## Data Files Structure
 
 ## Network JSON Structure
+```json
+{
+  "nodes": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ],
+  "links": [
+    {
+      "source": 1,
+      "target": 2
+    }
+  ]
+}
+```
+You can find an example from the included networks [here](src/assets/data/lattice/network.json).
+  
 ### *Adding a New Network
+  
+
 ## Centrality JSON Structure
+```json
+{
+  "values": [
+    0.76,
+    0.66,
+    0.99
+    0.05
+  ],
+  "nodes": [
+    3,
+    0,
+    2,
+    1
+  ],
+  "largest_component": [
+    1.0,
+    0.9591836734693877,
+    0.9387755102040817,
+    0.9183673469387755,
+    0.8979591836734694
+  ]
+}
+```
+You can find an example from the included centralities for the lattice network [here](src/assets/data/lattice/centralities/degree.json).
+  
 ### *Adding a New Centrality
 
+  
