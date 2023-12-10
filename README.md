@@ -9,6 +9,13 @@ DomiLab, is a tool that allows you to visualize attacks on complex networks. You
 **[Showcased Networks](#showcased-networks)**<br>
 **[Installation](#installation)**<br>
 **[Data Files Structure](#data-files-structure)**<br>
+- **[Network JSON Structure](#network-json-structure)**<br>
+- **[Centrality JSON Structure](#centrality-json-structure)**<br>
+
+**[Extending DomiLab](#extending-domilab)**<br>
+- **[Adding a New Network](#adding-a-new-network)**<br>
+- **[Adding a New Centrality](#adding-a-new-centrality)**<br>
+- **[Adding a Reference to a New Publication](#adding-a-reference-to-a-new-publication)**<br>
 
 - - - -
 
@@ -35,7 +42,7 @@ Lattice  | - | 84 | 49
 
 ## Data Files Structure
 
-## Network JSON Structure
+### Network JSON Structure
 ```json
 {
   "nodes": [
@@ -56,12 +63,7 @@ Lattice  | - | 84 | 49
 ```
 You can find an example from the included networks in [data/lattice/network.json](src/assets/data/lattice/network.json).
   
-### *Adding a New Network
-1. Create a new directory directly in `src/assets/data/` and give it the name of the new network. Example: "dolphins".
-2. Prepare your network in a JSON file with the structure shown in [Network JSON Structure](#network-json-structure) and place it in the new network directory.
-3. The network will show up in the network selection dropdowns in DomiLab once you add 1 or more pre-calculated centralities to it. See [Adding a New Centrality](#adding-a-new-centrality).
-
-## Centrality JSON Structure
+### Centrality JSON Structure
 ```json
 {
   "values": [
@@ -87,6 +89,18 @@ You can find an example from the included networks in [data/lattice/network.json
 ```
 You can find an example from the included centralities for the lattice network in [data/lattice/centralities/degree.json](src/assets/data/lattice/centralities/degree.json).
   
-### *Adding a New Centrality
+## Extending DomiLab
 
+### Adding a New Network
+1. Create a new directory directly in `src/assets/data/` and give it the name of the new network. Example: "dolphins".
+2. Prepare your network in a JSON file with the structure shown in [Network JSON Structure](#network-json-structure) and place it in the new network directory.
+3. The network will show up in the network selection dropdowns in DomiLab once you add 1 or more pre-calculated centralities to it. See [Adding a New Centrality](#adding-a-new-centrality).
   
+### Adding a New Centrality
+1. .
+
+### Adding a Reference to a New Publication
+If you wish to include your centrality publicly in DomiLab, submit a pull request with the following changes:
+1. .
+
+   
