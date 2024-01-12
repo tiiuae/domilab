@@ -1,0 +1,78 @@
+<div class="d-flex flex-column h-100">
+
+
+    <!-- Toolbar -->
+    <div class="container-fluid">
+        <div class="row align-items-center shadow-sm" id="controls">
+
+            <!-- Playback controls -->
+            <div class="col-7 d-flex align-items-center">
+                <div id="resetButton">
+                    <button type="button" class="btn btn-light btn-lg rounded-circle" title="Reset">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                </div>
+                <div id="playButton">
+                    <button *ngIf="1" type="button" class="btn btn-secondary btn-lg rounded-circle" title="Play">
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                    <button *ngIf="0" type="button" class="btn btn-secondary btn-lg rounded-circle" title="Pause">
+                        <i class="bi bi-pause-fill"></i>
+                    </button>
+                </div>
+                <div id="stepButton">
+                    <button type="button" class="btn btn-light btn-lg rounded-circle" title="Step">
+                        <i class="bi bi-skip-end-fill"></i>
+                    </button>
+                </div>
+                <div class="text-center ms-5" id="currentIteration">
+                    <span class="display-6">{{ 0 | number: '3.0' }}</span><br>
+                    <p>current<br>iteration</p>
+                </div>
+                <div class="text-center" id="currentCounter">
+                    <span class="display-6">{{ 0 | number: '1.2-2' }}</span><br>
+                    <p>largest<br>component</p>
+                </div>
+            </div>
+
+            <!-- Selection -->
+            <div class="col-3">
+                <label class="form-label m-0">Select Network</label>
+                <select class="form-select">
+                </select>
+            </div>
+            <!-- <div class="col-2">
+                <label class="form-label m-0">Select Centrality #1</label>
+                <select class="form-select">
+                </select>
+            </div> -->
+            <!-- <div class="col-2">
+                <label class="form-label m-0">Select Centrality #2</label>
+                <select class="form-select">
+                </select>
+            </div> -->
+
+            <div class="col-2">
+                <label for="speedRange" class="form-label mb-2">Playback Speed</label>
+                <div class="d-flex align-items-center">
+                    <input
+                        type="range" class="form-range" min="50" max="1000" step="50"
+                        value=""
+                        id="speedRange">
+                    <span class="badge rounded-pill text-bg-secondary ms-2">0 ms</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Graph -->
+    <div class="d-flex flex-grow-1 position-relative">
+        <div class="w-50" style="border: 3px solid red;">
+
+        </div>
+        <div class="w-50" style="border: 3px solid red;">
+
+        </div>
+    </div>
+</div>

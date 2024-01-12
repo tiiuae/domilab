@@ -15,6 +15,7 @@ import { MenuService } from './services/menu.service';
 import { ArcDiagramComponent } from './components/arc-diagram/arc-diagram.component';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 import { environment as env } from 'src/environments/environment';
+import { ComparisonPage } from './pages/comparison/comparison.page';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { environment as env } from 'src/environments/environment';
     InteractiveSigmaPage,
     NetworkAttacksPage,
     ArcDiagramPage,
+    ComparisonPage,
   ],
   imports: [
     BrowserModule,

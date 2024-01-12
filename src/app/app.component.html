@@ -17,6 +17,13 @@
           Network Attacks
         </a>
       </li>
+      <li class="nav-item">
+        <a href="/comparison" class="nav-link disabled"
+          [ngClass]="{'active': this.menu.isActive('comparison'), 'link-dark': !this.menu.isActive('comparison')}">
+          <i class="bi bi-arrow-left-right me-2"></i>
+          Side-by-side <span class="badge text-bg-secondary">Soon</span>
+        </a>
+      </li>
       <li>
         <a href="/arc-diagram" class="nav-link disabled"
           [ngClass]="{'active': this.menu.isActive('arc-diagram'), 'link-dark': !this.menu.isActive('arc-diagram')}">

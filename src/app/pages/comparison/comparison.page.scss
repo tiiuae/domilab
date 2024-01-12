@@ -1,0 +1,58 @@
+
+#controls {
+    background-color: rgb(240, 240, 240);
+    padding: 10px 25px;
+}
+
+#resetButton {
+    padding: 5px;
+    button {
+        aspect-ratio: 1;
+    }
+}
+
+#playButton {
+    color: gray;
+    button {
+        width: 80px;
+        aspect-ratio: 1;
+        font-size: 3rem;
+        padding: 0;
+    }
+}
+
+#stepButton {
+    padding: 5px;
+    button {
+        aspect-ratio: 1;
+    }
+}
+
+#currentCounter {
+    margin: 0 10px 0 10px;
+    p {
+        line-height: 1em;
+        font-size: 0.8rem;
+    }
+}
+
+#currentIteration {
+    margin: 0 10px 0 0px;
+    p {
+        line-height: 1em;
+        font-size: 0.8rem;
+    }
+}
+
+#speedRange {
+    direction: rtl;
+}
+
+#sigmaRangeContainer {
+    background-color: rgb(240, 240, 240);
+    border-radius: 50px;
+    padding: 8px 22px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 30%;
+}
