@@ -16,6 +16,7 @@ import { ArcDiagramComponent } from './components/arc-diagram/arc-diagram.compon
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 import { environment as env } from 'src/environments/environment';
 import { LccPlotComponent } from './components/lcc-plot/lcc-plot.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LccPlotComponent } from './components/lcc-plot/lcc-plot.component';
     AppRoutingModule,
     NgxGoogleAnalyticsModule.forRoot(env.config.ua_measurement_id),
     NgxGoogleAnalyticsRouterModule,
+    NgChartsModule,
     NgbModule
   ],
   providers: [
