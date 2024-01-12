@@ -22,6 +22,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
+    "chart.js": "^4.4.1",
     "d3": "^7.8.4",
     "express": "^4.18.2",
     "ngx-google-analytics": "^14.0.1",

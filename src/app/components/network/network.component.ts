@@ -63,7 +63,7 @@ export class NetworkComponent implements AfterViewInit, OnChanges {
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
-    var svg = d3.select("svg")
+    var svg = d3.select("#network")
       .attr("width", this.width)
       .attr("height", this.height)
       .attr("viewBox", [-this.width / 2, -this.height / 2, this.width, this.height])
