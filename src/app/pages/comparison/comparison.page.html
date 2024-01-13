@@ -29,10 +29,10 @@
                     <span class="display-6">{{ 0 | number: '3.0' }}</span><br>
                     <p>current<br>iteration</p>
                 </div>
-                <div class="text-center" id="currentCounter">
+                <!-- <div class="text-center" id="currentCounter">
                     <span class="display-6">{{ 0 | number: '1.2-2' }}</span><br>
                     <p>largest<br>component</p>
-                </div>
+                </div> -->
             </div>
 
             <!-- Selection -->
@@ -68,11 +68,49 @@
 
     <!-- Graph -->
     <div class="d-flex flex-grow-1 position-relative">
-        <div class="w-50" style="border: 3px solid red;">
-
+        <div class="d-flex flex-column p-4 w-50">
+            <div class="d-flex">
+                <h1 class="display-4">#1</h1>
+                <div class="flex-grow-1 ps-4">
+                    <label class="form-label">Select Centrality</label>
+                    <select class="form-select">
+                    </select>
+                </div>
+                <div class="text-center ps-4" id="currentCounter">
+                    <span class="display-6">{{ 0 | number: '1.2-2' }}</span><br>
+                    <p>largest<br>component</p>
+                </div>
+            </div>
+            <div class="flex-grow-1">
+                <app-network #graphOne
+                    *ngIf="network.nodes.length"
+                    [data]="network"
+                    [network]="network"
+                    [centrality]="centrality"
+                ></app-network>
+            </div>
         </div>
-        <div class="w-50" style="border: 3px solid red;">
-
+        <div class="d-flex flex-column p-4 w-50 border-start">
+            <div class="d-flex">
+                <h1 class="display-4">#2</h1>
+                <div class="flex-grow-1 ps-4">
+                    <label class="form-label">Select Centrality</label>
+                    <select class="form-select">
+                    </select>
+                </div>
+                <div class="text-center ps-4" id="currentCounter">
+                    <span class="display-6">{{ 0 | number: '1.2-2' }}</span><br>
+                    <p>largest<br>component</p>
+                </div>
+            </div>
+            <div class="flex-grow-1">
+                <app-network #graphTwo
+                    *ngIf="network.nodes.length"
+                    [data]="network"
+                    [network]="network"
+                    [centrality]="centrality"
+                ></app-network>
+            </div>
         </div>
     </div>
 </div>
