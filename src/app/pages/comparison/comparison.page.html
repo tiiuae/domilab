@@ -13,102 +13,92 @@
                     </button>
                 </div>
                 <div id="playButton">
-                    <button *ngIf="1" type="button" class="btn btn-secondary btn-lg rounded-circle" title="Play">
+                    <button *ngIf="!playing" type="button" class="btn btn-secondary btn-lg rounded-circle" title="Play" (click)="play()">
                         <i class="bi bi-play-fill"></i>
                     </button>
-                    <button *ngIf="0" type="button" class="btn btn-secondary btn-lg rounded-circle" title="Pause">
+                    <button *ngIf="playing" type="button" class="btn btn-secondary btn-lg rounded-circle" title="Pause" (click)="pause()">
                         <i class="bi bi-pause-fill"></i>
                     </button>
                 </div>
                 <div id="stepButton">
-                    <button type="button" class="btn btn-light btn-lg rounded-circle" title="Step">
+                    <button type="button" class="btn btn-light btn-lg rounded-circle" title="Step" (click)="step()">
                         <i class="bi bi-skip-end-fill"></i>
                     </button>
                 </div>
                 <div class="text-center ms-5" id="currentIteration">
-                    <span class="display-6">{{ 0 | number: '3.0' }}</span><br>
-                    <p>current<br>iteration</p>
+                    <span class="display-6">{{ currentIteration | number: '3.0' }}</span><br>
+                    <p class="mb-2">current<br>iteration</p>
                 </div>
-                <!-- <div class="text-center" id="currentCounter">
-                    <span class="display-6">{{ 0 | number: '1.2-2' }}</span><br>
-                    <p>largest<br>component</p>
-                </div> -->
             </div>
 
             <!-- Selection -->
             <div class="col-3">
                 <label class="form-label m-0">Select Network</label>
-                <select class="form-select">
+                <select class="form-select" (input)="selectNetwork($event)">
+                    <option *ngFor="let n of networks" value="{{ n.name }}" [selected]="n.name == selectedNetwork">{{ n.display_name }}</option>
                 </select>
             </div>
-            <!-- <div class="col-2">
-                <label class="form-label m-0">Select Centrality #1</label>
-                <select class="form-select">
-                </select>
-            </div> -->
-            <!-- <div class="col-2">
-                <label class="form-label m-0">Select Centrality #2</label>
-                <select class="form-select">
-                </select>
-            </div> -->
 
             <div class="col-2">
                 <label for="speedRange" class="form-label mb-2">Playback Speed</label>
                 <div class="d-flex align-items-center">
                     <input
                         type="range" class="form-range" min="50" max="1000" step="50"
-                        value=""
+                        value="{{ attackIntervalDelay }}" title="{{ attackIntervalDelay | number: '1.0-0' }}"
+                        (change)="updateSpeed($event)"
                         id="speedRange">
-                    <span class="badge rounded-pill text-bg-secondary ms-2">0 ms</span>
+                    <span class="badge rounded-pill text-bg-secondary ms-2">{{ attackIntervalDelay }} ms</span>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- Graph -->
+    <!-- Two Graphs -->
     <div class="d-flex flex-grow-1 position-relative">
-        <div class="d-flex flex-column p-4 w-50">
-            <div class="d-flex">
+        <div class="d-flex flex-column w-50">
+            <div class="d-flex px-4 pt-4">
                 <h1 class="display-4">#1</h1>
                 <div class="flex-grow-1 ps-4">
                     <label class="form-label">Select Centrality</label>
-                    <select class="form-select">
+                    <select class="form-select" [disabled]="!selectedNetwork" (input)="selectCentralityOne($event)">
+                        <option *ngFor="let c of centralities" value="{{ c.name }}" [selected]="c.name == selectedCentralityOne">{{ c.display_name }}</option>
                     </select>
                 </div>
-                <div class="text-center ps-4" id="currentCounter">
-                    <span class="display-6">{{ 0 | number: '1.2-2' }}</span><br>
+                <div class="text-center ps-4 current-counter">
+                    <span class="display-6">{{ currentGraphOneLCC | number: '1.2-2' }}</span><br>
                     <p>largest<br>component</p>
                 </div>
             </div>
             <div class="flex-grow-1">
                 <app-network #graphOne
-                    *ngIf="network.nodes.length"
-                    [data]="network"
-                    [network]="network"
-                    [centrality]="centrality"
+                    *ngIf="networkOne?.nodes.length"
+                    [data]="networkOne"
+                    [network]="networkOne"
+                    [centrality]="centralityOne"
                 ></app-network>
             </div>
         </div>
-        <div class="d-flex flex-column p-4 w-50 border-start">
-            <div class="d-flex">
+        <div class="d-flex flex-column w-50 border-start">
+            <div class="d-flex px-4 pt-4">
                 <h1 class="display-4">#2</h1>
                 <div class="flex-grow-1 ps-4">
                     <label class="form-label">Select Centrality</label>
-                    <select class="form-select">
+                    <select class="form-select" [disabled]="!selectedNetwork" (input)="selectCentralityTwo($event)">
+                        <option *ngFor="let c of centralities" value="{{ c.name }}" [selected]="c.name == selectedCentralityTwo">{{ c.display_name }}</option>
                     </select>
                 </div>
-                <div class="text-center ps-4" id="currentCounter">
-                    <span class="display-6">{{ 0 | number: '1.2-2' }}</span><br>
+                <div class="text-center ps-4 current-counter">
+                    <span class="display-6">{{ currentGraphTwoLCC | number: '1.2-2' }}</span><br>
                     <p>largest<br>component</p>
                 </div>
             </div>
             <div class="flex-grow-1">
                 <app-network #graphTwo
-                    *ngIf="network.nodes.length"
-                    [data]="network"
-                    [network]="network"
-                    [centrality]="centrality"
+                    *ngIf="networkTwo?.nodes.length"
+                    [data]="networkTwo"
+                    [network]="networkTwo"
+                    [centrality]="centralityTwo"
                 ></app-network>
             </div>
         </div>

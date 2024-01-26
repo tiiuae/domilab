@@ -27,11 +27,11 @@
             </div>
             <div class="text-center ms-5" id="currentIteration">
                 <span class="display-6">{{ currentIteration | number: '3.0' }}</span><br>
-                <p>current<br>iteration</p>
+                <p class="mb-2">current<br>iteration</p>
             </div>
             <div class="text-center" id="currentCounter">
                 <span class="display-6">{{ currentLargestComponent | number: '1.2-2' }}</span><br>
-                <p>largest<br>component</p>
+                <p class="mb-2">largest<br>component</p>
             </div>
         </div>
 
@@ -69,7 +69,7 @@
 <div class="flex-grow-1 position-relative">
 
     <app-network #graph
-        *ngIf="network.nodes.length"
+        *ngIf="network?.nodes.length"
         [data]="network"
         [network]="network"
         [centrality]="centrality"
