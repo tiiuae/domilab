@@ -23,7 +23,9 @@ export class ComparisonPage implements OnInit, AfterViewInit {
 
   selectedNetwork: any = "dolphin"
   selectedCentralityOne: any = "pagerank"
+  showSigmaSliderOne: boolean = false
   selectedCentralityTwo: any = "betweenness"
+  showSigmaSliderTwo: boolean = false
 
   currentGraphOneLCC: number = 1
   currentGraphTwoLCC: number = 1
@@ -59,6 +61,11 @@ export class ComparisonPage implements OnInit, AfterViewInit {
     this.networkTwo = await firstValueFrom(this.api.getNetwork(this.selectedNetwork))
     this.centralityOne = await firstValueFrom(this.api.getCentrality(this.selectedNetwork, this.selectedCentralityOne))
     this.centralityTwo = await firstValueFrom(this.api.getCentrality(this.selectedNetwork, this.selectedCentralityTwo))
+    this.currentIteration = 0
+    this.currentGraphOneLCC = 1
+    this.currentGraphTwoLCC = 1
+    this.showSigmaSliderOne = false
+    this.showSigmaSliderTwo = false
   }
 
 
@@ -72,6 +79,16 @@ export class ComparisonPage implements OnInit, AfterViewInit {
 
   // onclick event handler
   public step(): void {
+    if (this.currentIteration >= this.centralityOne['largest_component'].length)
+    {
+      this.pause()
+      return
+    }
+    if (this.currentIteration >= this.centralityTwo['largest_component'].length)
+    {
+      this.pause()
+      return
+    }
     let removeNodeId = null
     removeNodeId = this.centralityOne['nodes'][this.currentIteration]
     this.graphOne.removeNode(removeNodeId)
@@ -103,6 +120,7 @@ export class ComparisonPage implements OnInit, AfterViewInit {
 
   // onclick event handler
   public selectNetwork(e: any) {
+    this.reset()
     this.selectedNetwork = e.target.value.length ? e.target.value : null
     // this.selectedSigma = null
     // // this.selectedCentrality = null
@@ -114,6 +132,7 @@ export class ComparisonPage implements OnInit, AfterViewInit {
 
   // onclick event handler
   public selectCentralityOne(e: any) {
+    this.reset()
     this.selectedCentralityOne = e.target.value.length ? e.target.value : null
     // this.selectedSigma = null
     // this.pause()
@@ -123,6 +142,7 @@ export class ComparisonPage implements OnInit, AfterViewInit {
 
   // onclick event handler
   public selectCentralityTwo(e: any) {
+    this.reset()
     this.selectedCentralityTwo = e.target.value.length ? e.target.value : null
     // this.selectedSigma = null
     // this.pause()

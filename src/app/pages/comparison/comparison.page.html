@@ -8,7 +8,7 @@
             <!-- Playback controls -->
             <div class="col-7 d-flex align-items-center">
                 <div id="resetButton">
-                    <button type="button" class="btn btn-light btn-lg rounded-circle" title="Reset">
+                    <button type="button" class="btn btn-light btn-lg rounded-circle" title="Reset" (click)="reset()">
                         <i class="bi bi-arrow-counterclockwise"></i>
                     </button>
                 </div>
@@ -58,48 +58,92 @@
     <div class="d-flex flex-grow-1 position-relative">
         <div class="d-flex flex-column w-50">
             <div class="d-flex px-4 pt-4">
-                <h1 class="display-4">#1</h1>
+                <h1 class="display-6">#1</h1>
                 <div class="flex-grow-1 ps-4">
                     <label class="form-label">Select Centrality</label>
                     <select class="form-select" [disabled]="!selectedNetwork" (input)="selectCentralityOne($event)">
                         <option *ngFor="let c of centralities" value="{{ c.name }}" [selected]="c.name == selectedCentralityOne">{{ c.display_name }}</option>
                     </select>
                 </div>
-                <div class="text-center ps-4 current-counter">
-                    <span class="display-6">{{ currentGraphOneLCC | number: '1.2-2' }}</span><br>
-                    <p>largest<br>component</p>
-                </div>
             </div>
-            <div class="flex-grow-1">
+            <div class="flex-grow-1 position-relative">
+
+                <div class="d-flex justify-content-center position-absolute top-0 mt-4 w-100">
+                    <div class="text-center current-counter">
+                        <span class="display-4">{{ currentGraphOneLCC | number: '1.2-2' }}</span><br>
+                        <p>largest connected<br>component</p>
+                    </div>
+                    <div class="text-center ps-4 current-counter">
+                        <span class="display-4">{{ ((1-currentGraphOneLCC)*100)+1 | number: '3.0-0' }}</span><br>
+                        <p>Number<br>of sub-groups</p>
+                    </div>
+                </div>
+
                 <app-network #graphOne
                     *ngIf="networkOne?.nodes.length"
                     [data]="networkOne"
                     [network]="networkOne"
-                    [centrality]="centralityOne"
-                ></app-network>
+                    [centrality]="centralityOne">
+                </app-network>
+
+                <div *ngIf="1" class="position-absolute bottom-0 mb-4 w-100">
+                    <div class="d-flex align-items-center shadow-sm" id="sigmaRangeContainer">
+                        <label for="sigmaRange" class="form-label" style="min-width: 70px;">
+                            Sigma <strong>&sigma;</strong>
+                        </label>
+                        <input type="range" class="form-range" min="1" max="100" step="1"
+                            value="{{ 0 }}" title="{{ 0 | number: '1.2-2' }}"
+                            id="sigmaRange">
+                        <span class="badge rounded-pill text-bg-secondary ms-2">{{ 1 / 100 | number: '1.2-2' }}</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="d-flex flex-column w-50 border-start">
             <div class="d-flex px-4 pt-4">
-                <h1 class="display-4">#2</h1>
+                <h1 class="display-6">#2</h1>
                 <div class="flex-grow-1 ps-4">
                     <label class="form-label">Select Centrality</label>
                     <select class="form-select" [disabled]="!selectedNetwork" (input)="selectCentralityTwo($event)">
                         <option *ngFor="let c of centralities" value="{{ c.name }}" [selected]="c.name == selectedCentralityTwo">{{ c.display_name }}</option>
                     </select>
                 </div>
-                <div class="text-center ps-4 current-counter">
-                    <span class="display-6">{{ currentGraphTwoLCC | number: '1.2-2' }}</span><br>
-                    <p>largest<br>component</p>
-                </div>
             </div>
-            <div class="flex-grow-1">
+
+            <div class="flex-grow-1 position-relative">
+
+                <div class="d-flex justify-content-center position-absolute top-0 mt-4 w-100">
+                    <div class="text-center current-counter">
+                        <span class="position-relative display-4">
+                            {{ currentGraphTwoLCC | number: '1.2-2' }}
+                            <!-- <i class="bi bi-info-circle position-absolute text-secondary top-0" style="font-size: 0.8rem;"></i><br> -->
+                        </span>
+                        <p>largest connected<br>component</p>
+                    </div>
+                    <div class="text-center ps-4 current-counter">
+                        <span class="display-4">{{ ((1-currentGraphTwoLCC)*100)+1 | number: '3.0-0' }}</span><br>
+                        <p>Number<br>of sub-groups</p>
+                    </div>
+                </div>
+
                 <app-network #graphTwo
                     *ngIf="networkTwo?.nodes.length"
                     [data]="networkTwo"
                     [network]="networkTwo"
-                    [centrality]="centralityTwo"
-                ></app-network>
+                    [centrality]="centralityTwo">
+                </app-network>
+
+                <div *ngIf="1" class="position-absolute bottom-0 mb-4 w-100">
+                    <div class="d-flex align-items-center shadow-sm" id="sigmaRangeContainer">
+                        <label for="sigmaRange" class="form-label" style="min-width: 70px;">
+                            Sigma <strong>&sigma;</strong>
+                        </label>
+                        <input type="range" class="form-range" min="1" max="100" step="1"
+                            value="{{ 0 }}" title="{{ 0 | number: '1.2-2' }}"
+                            id="sigmaRange">
+                        <span class="badge rounded-pill text-bg-secondary ms-2">{{ 1 / 100 | number: '1.2-2' }}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
