@@ -32,6 +32,8 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
   playing: boolean = false
   resetEnabled: boolean = true
 
+  lcc_curves: any = []
+
   constructor(
     private api: ApiService,
     private menu: MenuService) {
@@ -74,6 +76,7 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
 
   // onclick event handler
   public play(): void {
+    this._loadPlot()
     this.playing = true
     this.attackInterval = setInterval(() => {
       this.step();
@@ -170,6 +173,21 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
       .subscribe((response: any) => {
         this.centralities = response['data'];
       })
+  }
+
+  private async _loadPlot() {
+    var centralities = ["betweenness", "degree"]
+    var datasets = []
+
+    for (const i in centralities) {
+      var c: any = await firstValueFrom(this.api.getCentrality("karateclub", centralities[i]))
+      datasets.push({
+        data: c['largest_component'],
+        label: centralities[i]
+      })
+    }
+
+    this.lcc_curves = datasets
   }
 
 }

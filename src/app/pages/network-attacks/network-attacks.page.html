@@ -64,7 +64,10 @@
 
 </div>
 
-<app-lcc-plot></app-lcc-plot>
+<app-lcc-plot
+    *ngIf="lcc_curves?.length"
+    [datasets]="lcc_curves"
+></app-lcc-plot>
 
 <!-- Graph -->
 <div class="flex-grow-1 position-relative ">
