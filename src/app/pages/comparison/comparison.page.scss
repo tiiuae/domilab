@@ -48,11 +48,12 @@
     direction: rtl;
 }
 
-#sigmaRangeContainer {
+.sigma-range-container {
     background-color: rgb(240, 240, 240);
     border-radius: 50px;
     padding: 8px 22px;
     margin-right: auto;
     margin-left: auto;
     width: 60%;
+    z-index: 99;
 }

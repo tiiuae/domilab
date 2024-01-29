@@ -3,20 +3,14 @@ import * as d3 from 'd3';
 
 @Component({
   selector: 'app-network',
-  // encapsulation: ViewEncapsulation.None,
   templateUrl: './network.component.html',
   styleUrls: ['./network.component.scss']
 })
-export class NetworkComponent implements AfterViewInit, OnChanges {
+export class NetworkComponent implements AfterViewInit {
 
   @ViewChild('networkContainer') network_container?: ElementRef<any>;
   @Input('network') network: any;
   @Input('centrality') centrality: any;
-  @Input('data')
-  data: {
-    nodes: any[],
-    links: any[],
-  } | any;
 
   private d3_graph: any
   private initial_data: any;
@@ -29,26 +23,53 @@ export class NetworkComponent implements AfterViewInit, OnChanges {
   ngAfterViewInit() {
     this.height = this.network_container?.nativeElement.offsetHeight;
     this.width = this.network_container?.nativeElement.offsetWidth;
-    this.initial_data = JSON.parse(JSON.stringify(this.data)); // deep copy (you can just rebuild onChange)
-  }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.network && this.centrality) {
-      this.d3_graph = this.build(this.network, this.centrality);
-      this.network_container?.nativeElement.append(this.d3_graph);
-    }
-  }
-
-  public build(network: any, centrality: any) {
-
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
-    // copy nodes and links,
-    // and add centrality values to the nodes
-    const links = network['links'].map((e: any) => ({...e}));
-    const nodes = network['nodes'].map((e: any) => {
-      e['value'] = centrality['values'][e.id]
+    // add the centrality as the value of each node
+    this.network.nodes = this.network.nodes.map((e: any) => {
+      e['value'] = this.centrality['values'][e.id]
       return e
     });
+
+    this.initial_data = this.deepCopy(this.network); // deep copy (you can just rebuild onChange)
+    this.d3_graph = this.build(this.network);
+    this.network_container?.nativeElement.append(this.d3_graph);
+  }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   // console.log(this.network, this.centrality);
+  //   if (this.network && this.centrality) {
+  //     this.d3_graph = this.build(this.network, this.centrality);
+  //     this.network_container?.nativeElement.append(this.d3_graph);
+  //   }
+  // }
+
+  public removeNode(nodeId: number) {
+    this.network.nodes = this.network.nodes.filter((n: any) => {
+      return parseInt(n.id) != nodeId
+    })
+    this.network.links = this.network.links.filter((l: any) => {
+      return parseInt(l.source) != nodeId && parseInt(l.target) != nodeId
+    })
+
+    this.d3_graph.update(this.network)
+    return this.network
+  }
+
+  public resetGraph() {
+    this.network_container!.nativeElement.innerHTML = "";
+    this.height = this.network_container?.nativeElement.offsetHeight;
+    this.width = this.network_container?.nativeElement.offsetWidth;
+
+    this.network = JSON.parse(JSON.stringify(this.initial_data));
+    this.d3_graph = this.build(this.network);
+    this.network_container?.nativeElement.append(this.d3_graph);
+  }
+
+  private build(network: any) {
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
+    // copy nodes and links
+    const links = this.deepCopy(network['links'])
+    const nodes = this.deepCopy(network['nodes'])
 
     const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id((d: any) => d.id))
@@ -124,13 +145,13 @@ export class NetworkComponent implements AfterViewInit, OnChanges {
     node.call(drag);
 
     return Object.assign(svg.node()!, {
-      update({nodes, links}: any) {
+      update(network: any) {
 
         // Make a shallow copy to protect against mutation, while
         // recycling old nodes to preserve position and velocity.
         const old = new Map(node.data().map((d: any) => [d.id, d]));
-        nodes = nodes.map((d: any) => Object.assign(old.get(d.id) || {}, d));
-        links = links.map((d: any) => Object.assign({}, d));
+        var links = network['links'].map((d: any) => Object.assign({}, d));
+        var nodes = network['nodes'].map((d: any) => Object.assign(old.get(d.id) || {}, d));
 
         simulation.nodes(nodes);
         simulation.force<d3.ForceLink<any, any>>("link")!.links(links);
@@ -150,26 +171,8 @@ export class NetworkComponent implements AfterViewInit, OnChanges {
     });
   }
 
-  public removeNode(nodeId: number) {
-    this.data.nodes = this.data.nodes.filter((n: any) => {
-      return parseInt(n.id) != nodeId
-    })
-    this.data.links = this.data.links.filter((l: any) => {
-      return parseInt(l.source) != nodeId && parseInt(l.target) != nodeId
-    })
-
-    this.d3_graph.update((this.data))
-    return this.data
-  }
-
-  public resetGraph() {
-    this.network_container!.nativeElement.innerHTML = "";
-    this.height = this.network_container?.nativeElement.offsetHeight;
-    this.width = this.network_container?.nativeElement.offsetWidth;
-
-    this.data = JSON.parse(JSON.stringify(this.initial_data));
-    this.d3_graph = this.build(this.data.nodes, this.data.links);
-    this.network_container?.nativeElement.append(this.d3_graph);
+  private deepCopy(json_obj: any) {
+    return JSON.parse(JSON.stringify(json_obj))
   }
 
 }

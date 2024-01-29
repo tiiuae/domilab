@@ -75,26 +75,26 @@
                     </div>
                     <div class="text-center ps-4 current-counter">
                         <span class="display-4">{{ ((1-currentGraphOneLCC)*100)+1 | number: '3.0-0' }}</span><br>
-                        <p>Number<br>of sub-groups</p>
+                        <p>Number<br>of components</p>
                     </div>
                 </div>
 
                 <app-network #graphOne
-                    *ngIf="networkOne?.nodes.length"
-                    [data]="networkOne"
+                    *ngIf="networkOne?.nodes.length && centralityOne?.nodes.length"
                     [network]="networkOne"
                     [centrality]="centralityOne">
                 </app-network>
 
-                <div *ngIf="1" class="position-absolute bottom-0 mb-4 w-100">
-                    <div class="d-flex align-items-center shadow-sm" id="sigmaRangeContainer">
-                        <label for="sigmaRange" class="form-label" style="min-width: 70px;">
+                <div *ngIf="showSigmaSliderOne" class="position-absolute bottom-0 mb-4 w-100">
+                    <div class="d-flex align-items-center shadow-sm sigma-range-container">
+                        <label for="sigmaRangeOne" class="form-label" style="min-width: 70px;">
                             Sigma <strong>&sigma;</strong>
                         </label>
                         <input type="range" class="form-range" min="1" max="100" step="1"
-                            value="{{ 0 }}" title="{{ 0 | number: '1.2-2' }}"
-                            id="sigmaRange">
-                        <span class="badge rounded-pill text-bg-secondary ms-2">{{ 1 / 100 | number: '1.2-2' }}</span>
+                            value="{{ selectedSigmaOne }}" title="{{ selectedSigmaOne | number: '1.2-2' }}"
+                            (change)="updateSigmaOne($event)"
+                            id="sigmaRangeOne">
+                        <span class="badge rounded-pill text-bg-secondary ms-2">{{ selectedSigmaOne / 100 | number: '1.2-2' }}</span>
                     </div>
                 </div>
             </div>
@@ -122,26 +122,26 @@
                     </div>
                     <div class="text-center ps-4 current-counter">
                         <span class="display-4">{{ ((1-currentGraphTwoLCC)*100)+1 | number: '3.0-0' }}</span><br>
-                        <p>Number<br>of sub-groups</p>
+                        <p>Number<br>of components</p>
                     </div>
                 </div>
 
                 <app-network #graphTwo
-                    *ngIf="networkTwo?.nodes.length"
-                    [data]="networkTwo"
+                    *ngIf="networkTwo?.nodes.length && centralityTwo?.nodes.length"
                     [network]="networkTwo"
                     [centrality]="centralityTwo">
                 </app-network>
 
-                <div *ngIf="1" class="position-absolute bottom-0 mb-4 w-100">
-                    <div class="d-flex align-items-center shadow-sm" id="sigmaRangeContainer">
-                        <label for="sigmaRange" class="form-label" style="min-width: 70px;">
+                <div *ngIf="showSigmaSliderTwo" class="position-absolute bottom-0 mb-4 w-100">
+                    <div class="d-flex align-items-center shadow-sm sigma-range-container">
+                        <label for="sigmaRangeTwo" class="form-label" style="min-width: 70px;">
                             Sigma <strong>&sigma;</strong>
                         </label>
                         <input type="range" class="form-range" min="1" max="100" step="1"
-                            value="{{ 0 }}" title="{{ 0 | number: '1.2-2' }}"
-                            id="sigmaRange">
-                        <span class="badge rounded-pill text-bg-secondary ms-2">{{ 1 / 100 | number: '1.2-2' }}</span>
+                            value="{{ selectedSigmaTwo }}" title="{{ selectedSigmaTwo | number: '1.2-2' }}"
+                            (change)="updateSigmaTwo($event)"
+                            id="sigmaRangeTwo">
+                        <span class="badge rounded-pill text-bg-secondary ms-2">{{ selectedSigmaTwo / 100 | number: '1.2-2' }}</span>
                     </div>
                 </div>
             </div>
