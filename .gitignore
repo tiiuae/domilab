@@ -44,3 +44,4 @@ Thumbs.db
 # Custom
 _data/
 push_to_ws.bat
+.htaccess

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -23,6 +23,7 @@ export class NetworkComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.height = this.network_container?.nativeElement.offsetHeight;
     this.width = this.network_container?.nativeElement.offsetWidth;
+    console.log(this.centrality);
 
     // add the centrality as the value of each node
     this.network.nodes = this.network.nodes.map((e: any) => {

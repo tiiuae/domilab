@@ -53,6 +53,8 @@ export class NetworkAttacksPage implements OnInit, AfterViewInit {
     this.centrality = null
     this.network = await firstValueFrom(this.api.getNetwork(this.selectedNetwork))
     this.centrality = await firstValueFrom(this.api.getCentrality(this.selectedNetwork, this.selectedCentrality))
+    console.log(this.centrality);
+    
 
     // in the case of domirank
     if (this.hasSigmaParameter(this.centrality)) {
